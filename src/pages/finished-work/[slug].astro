@@ -3,12 +3,11 @@ import {
 	decodeSlug,
 	getEmDashCollection,
 	getEmDashEntry,
-	getEntryTerms,
 } from "emdash";
 import { Image, PortableText } from "emdash/ui";
 import Base from "../../layouts/Base.astro";
 import PieceCard from "../../components/PieceCard.astro";
-import { ETSY_SHOP_URL } from "../../lib/site";
+import { ETSY_SHOP_URL, getPrimaryTermLabel, getTermLabels } from "../../lib/site";
 
 const slug = decodeSlug(Astro.params.slug);
 
@@ -16,27 +15,32 @@ if (!slug) {
 	return Astro.redirect("/404");
 }
 
-const { entry: piece, cacheHint } = await getEmDashEntry("pieces", slug);
+const { entry: piece, cacheHint: pieceCacheHint } = await getEmDashEntry(
+	"pieces",
+	slug,
+);
 
 if (!piece) {
 	return Astro.redirect("/404");
 }
 
-if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
-
-const [categories, tags, { entries: relatedPieces }] = await Promise.all([
-	getEntryTerms("pieces", piece.data.id, "category"),
-	getEntryTerms("pieces", piece.data.id, "tag"),
-	getEmDashCollection("pieces", {
+const { entries: relatedPieces, cacheHint: relatedCacheHint } =
+	await getEmDashCollection("pieces", {
 		orderBy: { published_at: "desc" },
 		limit: 4,
-	}),
-]);
+	});
+
+if (Astro.cache?.enabled) {
+	Astro.cache.set(pieceCacheHint);
+	Astro.cache.set(relatedCacheHint);
+}
 
 const otherPieces = relatedPieces
 	.filter((relatedPiece) => relatedPiece.id !== piece.id)
 	.slice(0, 3);
 const ctaUrl = piece.data.etsy_url || ETSY_SHOP_URL;
+const categoryLabel = getPrimaryTermLabel(piece.data.terms?.category);
+const tagLabels = getTermLabels(piece.data.terms?.tag);
 const factRows = [
 	["Materials", piece.data.materials],
 	["Color", piece.data.color],
@@ -65,11 +69,7 @@ function getImageSrc(img: unknown): string | undefined {
 		</div>
 
 		<div class="piece-copy">
-			{
-				categories.length > 0 && (
-					<p class="eyebrow">{categories.map((term) => term.label).join(" / ")}</p>
-				)
-			}
+			{categoryLabel && <p class="eyebrow">{categoryLabel}</p>}
 			<h1 {...piece.edit.title}>{piece.data.title}</h1>
 			{
 				piece.data.summary && (
@@ -107,10 +107,10 @@ function getImageSrc(img: unknown): string | undefined {
 			}
 
 			{
-				tags.length > 0 && (
+				tagLabels.length > 0 && (
 					<div class="tag-list" aria-label="Piece tags">
-						{tags.map((tag) => (
-							<span>{tag.label}</span>
+						{tagLabels.map((tag) => (
+							<span>{tag}</span>
 						))}
 					</div>
 				)
@@ -140,6 +140,8 @@ function getImageSrc(img: unknown): string | undefined {
 							summary={relatedPiece.data.summary}
 							featuredImage={relatedPiece.data.featured_image ?? ""}
 							href={`/finished-work/${relatedPiece.id}`}
+							categories={getTermLabels(relatedPiece.data.terms?.category)}
+							tags={getTermLabels(relatedPiece.data.terms?.tag)}
 						/>
 					))}
 				</div>

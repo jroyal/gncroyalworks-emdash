@@ -106,33 +106,15 @@
 			"name": "category",
 			"label": "Categories",
 			"labelSingular": "Category",
-			"hierarchical": false,
+			"hierarchical": true,
 			"collections": ["pieces"],
 			"terms": [
-				{
-					"slug": "rifle-sling",
-					"label": "Rifle Slings"
-				},
-				{
-					"slug": "belt",
-					"label": "Belts"
-				},
-				{
-					"slug": "sheath",
-					"label": "Sheaths"
-				},
-				{
-					"slug": "cartridge-holder",
-					"label": "Cartridge Holders"
-				},
-				{
-					"slug": "accessory",
-					"label": "Accessories"
-				},
-				{
-					"slug": "other",
-					"label": "Other"
-				}
+				{ "slug": "rifle-sling", "label": "Rifle Slings" },
+				{ "slug": "belt", "label": "Belts" },
+				{ "slug": "sheath", "label": "Sheaths" },
+				{ "slug": "cartridge-holder", "label": "Cartridge Holders" },
+				{ "slug": "accessory", "label": "Accessories" },
+				{ "slug": "other", "label": "Other" }
 			]
 		},
 		{
@@ -142,38 +124,14 @@
 			"hierarchical": false,
 			"collections": ["pieces"],
 			"terms": [
-				{
-					"slug": "tooled",
-					"label": "Tooled"
-				},
-				{
-					"slug": "floral",
-					"label": "Floral"
-				},
-				{
-					"slug": "personalized",
-					"label": "Personalized"
-				},
-				{
-					"slug": "two-tone",
-					"label": "Two-tone"
-				},
-				{
-					"slug": "western",
-					"label": "Western"
-				},
-				{
-					"slug": "hunting",
-					"label": "Hunting"
-				},
-				{
-					"slug": "ranch",
-					"label": "Ranch"
-				},
-				{
-					"slug": "gift",
-					"label": "Gift"
-				}
+				{ "slug": "tooled", "label": "Tooled" },
+				{ "slug": "floral", "label": "Floral" },
+				{ "slug": "personalized", "label": "Personalized" },
+				{ "slug": "two-tone", "label": "Two-tone" },
+				{ "slug": "western", "label": "Western" },
+				{ "slug": "hunting", "label": "Hunting" },
+				{ "slug": "ranch", "label": "Ranch" },
+				{ "slug": "gift", "label": "Gift" }
 			]
 		}
 	],

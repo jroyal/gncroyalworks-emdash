@@ -5,49 +5,39 @@ import {
 	getEmDashCollection,
 	getEmDashEntry,
 	getTaxonomyTerms,
-	getTermsForEntries,
 } from "emdash";
 import { PortableText } from "emdash/ui";
 import Base from "../../layouts/Base.astro";
 import PieceCard from "../../components/PieceCard.astro";
-import { ETSY_SHOP_URL } from "../../lib/site";
+import { ETSY_SHOP_URL, flattenTerms, getTermLabels } from "../../lib/site";
 
-const activeCategory = Astro.url.searchParams.get("category");
+const requestedCategory = Astro.url.searchParams.get("category");
 
 const [
 	{ entry: page, cacheHint: pageCacheHint },
-	{ entries: pieces, cacheHint: piecesCacheHint },
-	categories,
+	categoryTree,
 ] = await Promise.all([
 	getEmDashEntry("pages", "finished-work"),
-	getEmDashCollection("pieces", {
-		orderBy: { published_at: "desc" },
-		...(activeCategory ? { where: { category: activeCategory } } : {}),
-	}),
 	getTaxonomyTerms("category"),
 ]);
+
+const categories = flattenTerms(categoryTree);
+const activeCategory = categories.find(
+	(category) => category.slug === requestedCategory,
+);
+
+const { entries: pieces, cacheHint: piecesCacheHint } =
+	await getEmDashCollection("pieces", {
+		orderBy: { published_at: "desc" },
+		...(activeCategory ? { where: { category: activeCategory.slug } } : {}),
+	});
 
 if (Astro.cache?.enabled) {
 	Astro.cache.set(pageCacheHint);
 	Astro.cache.set(piecesCacheHint);
 }
 
-const [categoriesByEntry, tagsByEntry] = await Promise.all([
-	getTermsForEntries(
-		"pieces",
-		pieces.map((piece) => piece.data.id),
-		"category",
-	),
-	getTermsForEntries(
-		"pieces",
-		pieces.map((piece) => piece.data.id),
-		"tag",
-	),
-]);
-
-const activeCategoryLabel =
-	categories.find((category) => category.slug === activeCategory)?.label ??
-	activeCategory;
+const activeCategoryLabel = activeCategory?.label;
 ---
 
 <Base
@@ -84,7 +74,7 @@ const activeCategoryLabel =
 							href={`/finished-work?category=${category.slug}`}
 							class:list={[
 								"category-filter",
-								{ active: activeCategory === category.slug },
+								{ active: activeCategory?.slug === category.slug },
 							]}
 						>
 							{category.label}
@@ -105,12 +95,8 @@ const activeCategoryLabel =
 							summary={piece.data.summary}
 							featuredImage={piece.data.featured_image ?? ""}
 							href={`/finished-work/${piece.id}`}
-							categories={(categoriesByEntry.get(piece.data.id) ?? []).map(
-								(term) => term.label,
-							)}
-							tags={(tagsByEntry.get(piece.data.id) ?? []).map(
-								(term) => term.label,
-							)}
+							categories={getTermLabels(piece.data.terms?.category)}
+							tags={getTermLabels(piece.data.terms?.tag)}
 						/>
 					))}
 				</div>

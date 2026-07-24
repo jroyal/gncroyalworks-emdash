@@ -1,19 +1,23 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "my-portfolio-site",
+	"name": "gncroyalworks-emdash",
 	"main": "./src/worker.ts",
 	"compatibility_date": "2026-02-24",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "my-portfolio-site",
+			"database_name": "gncroyalworks-emdash",
+			"migrations_dir": "../../migrations",
+			"database_id": "acabc033-2583-405b-b5f2-365d1a338e08",
 		},
 	],
 	"r2_buckets": [
 		{
 			"binding": "MEDIA",
-			"bucket_name": "my-portfolio-media",
+			"bucket_name": "gncroyalworks-emdash",
 		},
 	],
 	// Worker Loader for plugin sandboxing
@@ -24,6 +28,8 @@
 	],
 	// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
 	"triggers": {
-		"crons": ["* * * * *"],
+		"crons": [
+			"* * * * *"
+		],
 	},
 }

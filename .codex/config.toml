@@ -1,2 +1,5 @@
 [mcp_servers.emdash-docs]
 url = "https://docs.emdashcms.com/mcp"
+
+[mcp_servers.gncroyalworks-prod]
+url = "https://gncroyalworks-emdash.royal.workers.dev/_emdash/api/mcp"

@@ -32,8 +32,10 @@ Fields:
 
 Taxonomies:
 
-- `category`: Rifle Slings, Belts, Sheaths, Cartridge Holders, Accessories, Other
-- `tag`: Tooled, Floral, Personalized, Two-tone, Western, Hunting, Ranch, Gift
+- `category` hierarchical taxonomy attached to `pieces`: Rifle Slings, Belts, Sheaths, Cartridge Holders, Accessories, Other
+- `tag` flat taxonomy attached to `pieces`: Tooled, Floral, Personalized, Two-tone, Western, Hunting, Ranch, Gift
+
+Categories and tags are managed through EmDash taxonomy sidebar controls, then rendered from taxonomy assignments on public cards, filters, and detail pages.
 
 The `pages` collection remains for editable Home and Finished Work page copy.
 
@@ -41,7 +43,7 @@ The `pages` collection remains for editable Home and Finished Work page copy.
 
 - Home queries featured `pieces`, falling back to latest pieces when nothing is featured.
 - Finished Work lists all pieces, supports category filtering, and displays tags on cards.
-- Finished Work detail shows the CMS image, terms, summary, optional fact list, rich body copy, and Etsy CTA.
+- Finished Work detail shows the CMS image, category, summary, optional fact list, tags, rich body copy, and Etsy CTA.
 - `/work`, `/work/[slug]`, `/about`, `/contact`, and `/custom-work` redirect instead of maintaining old starter surfaces.
 
 ## Acceptance Tests

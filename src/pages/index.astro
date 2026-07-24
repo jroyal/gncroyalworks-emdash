@@ -1,13 +1,9 @@
 ---
-import {
-	getEmDashCollection,
-	getEmDashEntry,
-	getTermsForEntries,
-} from "emdash";
+import { getEmDashCollection, getEmDashEntry } from "emdash";
 import { PortableText } from "emdash/ui";
 import Base from "../layouts/Base.astro";
 import PieceCard from "../components/PieceCard.astro";
-import { ETSY_SHOP_URL } from "../lib/site";
+import { ETSY_SHOP_URL, getTermLabels } from "../lib/site";
 
 const [{ entry: homePage, cacheHint: pageCacheHint }, featuredResult] =
 	await Promise.all([
@@ -36,19 +32,6 @@ if (Astro.cache?.enabled) {
 	Astro.cache.set(pageCacheHint);
 	Astro.cache.set(piecesCacheHint);
 }
-
-const [categoriesByEntry, tagsByEntry] = await Promise.all([
-	getTermsForEntries(
-		"pieces",
-		featuredPieces.map((piece) => piece.data.id),
-		"category",
-	),
-	getTermsForEntries(
-		"pieces",
-		featuredPieces.map((piece) => piece.data.id),
-		"tag",
-	),
-]);
 ---
 
 <Base>
@@ -103,12 +86,8 @@ const [categoriesByEntry, tagsByEntry] = await Promise.all([
 							summary={piece.data.summary}
 							featuredImage={piece.data.featured_image ?? ""}
 							href={`/finished-work/${piece.id}`}
-							categories={(categoriesByEntry.get(piece.data.id) ?? []).map(
-								(term) => term.label,
-							)}
-							tags={(tagsByEntry.get(piece.data.id) ?? []).map(
-								(term) => term.label,
-							)}
+							categories={getTermLabels(piece.data.terms?.category)}
+							tags={getTermLabels(piece.data.terms?.tag)}
 						/>
 					))}
 				</div>
