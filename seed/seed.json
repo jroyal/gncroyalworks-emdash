@@ -1,0 +1,504 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "GNCRoyalWorks Gallery",
+		"description": "A gallery site for finished handmade leatherwork",
+		"author": "GNCRoyalWorks"
+	},
+	"settings": {
+		"title": "GNCRoyalWorks",
+		"tagline": "Handmade leatherwork in Katy, Texas"
+	},
+	"collections": [
+		{
+			"slug": "pieces",
+			"label": "Finished Pieces",
+			"labelSingular": "Finished Piece",
+			"supports": ["drafts", "revisions", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image",
+					"required": true
+				},
+				{
+					"slug": "summary",
+					"label": "Summary",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "featured",
+					"label": "Feature on Homepage",
+					"type": "boolean"
+				},
+				{
+					"slug": "materials",
+					"label": "Materials",
+					"type": "string"
+				},
+				{
+					"slug": "color",
+					"label": "Color",
+					"type": "string"
+				},
+				{
+					"slug": "dimensions",
+					"label": "Dimensions",
+					"type": "string"
+				},
+				{
+					"slug": "personalization_note",
+					"label": "Personalization Note",
+					"type": "text"
+				},
+				{
+					"slug": "availability_note",
+					"label": "Availability Note",
+					"type": "string"
+				},
+				{
+					"slug": "etsy_url",
+					"label": "Etsy URL",
+					"type": "url"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": ["drafts", "revisions", "search"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": false,
+			"collections": ["pieces"],
+			"terms": [
+				{
+					"slug": "rifle-sling",
+					"label": "Rifle Slings"
+				},
+				{
+					"slug": "belt",
+					"label": "Belts"
+				},
+				{
+					"slug": "sheath",
+					"label": "Sheaths"
+				},
+				{
+					"slug": "cartridge-holder",
+					"label": "Cartridge Holders"
+				},
+				{
+					"slug": "accessory",
+					"label": "Accessories"
+				},
+				{
+					"slug": "other",
+					"label": "Other"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "Tags",
+			"labelSingular": "Tag",
+			"hierarchical": false,
+			"collections": ["pieces"],
+			"terms": [
+				{
+					"slug": "tooled",
+					"label": "Tooled"
+				},
+				{
+					"slug": "floral",
+					"label": "Floral"
+				},
+				{
+					"slug": "personalized",
+					"label": "Personalized"
+				},
+				{
+					"slug": "two-tone",
+					"label": "Two-tone"
+				},
+				{
+					"slug": "western",
+					"label": "Western"
+				},
+				{
+					"slug": "hunting",
+					"label": "Hunting"
+				},
+				{
+					"slug": "ranch",
+					"label": "Ranch"
+				},
+				{
+					"slug": "gift",
+					"label": "Gift"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Home",
+					"url": "/"
+				},
+				{
+					"type": "custom",
+					"label": "Finished Work",
+					"url": "/finished-work"
+				},
+				{
+					"type": "custom",
+					"label": "Etsy Shop",
+					"url": "https://www.etsy.com/shop/GNCRoyalWorks",
+					"target": "_blank"
+				}
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"id": "home",
+				"slug": "home",
+				"status": "published",
+				"data": {
+					"title": "Leatherwork meant to be used.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Finished handmade leather pieces from Glenn Royal in Katy, Texas. Browse the gallery, then visit Etsy to ask about availability, custom details, or something similar.",
+									"_key": "home-span-1"
+								}
+							],
+							"_key": "home-block-1"
+						}
+					]
+				}
+			},
+			{
+				"id": "finished-work",
+				"slug": "finished-work",
+				"status": "published",
+				"data": {
+					"title": "Finished work",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A gallery of completed leatherwork. Some pieces may be available, some may already be spoken for, and many are examples of what can be made with custom touches.",
+									"_key": "finished-span-1"
+								}
+							],
+							"_key": "finished-block-1"
+						}
+					]
+				}
+			}
+		],
+		"pieces": [
+			{
+				"id": "floral-tooled-rifle-sling",
+				"slug": "floral-tooled-rifle-sling",
+				"status": "published",
+				"data": {
+					"title": "Floral Tooled Rifle Sling",
+					"summary": "A personalized rifle sling with floral tooling and warm two-tone detail.",
+					"featured": true,
+					"materials": "Leather, solid hardware",
+					"color": "Two-tone brown",
+					"dimensions": "Adjustable fit",
+					"personalization_note": "Names, initials, tooling, and finish may vary by request.",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/sling-fav-1200.webp",
+							"alt": "Personalized floral tooled leather rifle sling",
+							"filename": "floral-tooled-rifle-sling.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "This rifle sling puts the tooling front and center while keeping the piece built for regular use.",
+									"_key": "floral-sling-span-1"
+								}
+							],
+							"_key": "floral-sling-block-1"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Send a message on Etsy if you want to talk through one like it.",
+									"_key": "floral-sling-span-2"
+								}
+							],
+							"_key": "floral-sling-block-2"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["rifle-sling"],
+					"tag": ["tooled", "floral", "personalized", "hunting"]
+				}
+			},
+			{
+				"id": "royal-tooled-leather-belt",
+				"slug": "royal-tooled-leather-belt",
+				"status": "published",
+				"data": {
+					"title": "Royal Tooled Leather Belt",
+					"summary": "A personalized leather belt with tooling, lettering, and a western-style buckle.",
+					"featured": true,
+					"materials": "Leather, buckle hardware",
+					"color": "Brown",
+					"dimensions": "Sized to order",
+					"personalization_note": "Lettering and pattern details can vary by request.",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/royal-belt-1200.webp",
+							"alt": "Personalized tooled leather belt with western buckle",
+							"filename": "royal-tooled-leather-belt.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A belt is one of those pieces that needs to look good and hold up. This one keeps the tooling and name detail personal without losing its everyday purpose.",
+									"_key": "royal-belt-span-1"
+								}
+							],
+							"_key": "royal-belt-block-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["belt"],
+					"tag": ["tooled", "personalized", "western"]
+				}
+			},
+			{
+				"id": "tooled-knife-sheath",
+				"slug": "tooled-knife-sheath",
+				"status": "published",
+				"data": {
+					"title": "Tooled Knife Sheath",
+					"summary": "A belt-worn knife sheath with hand-tooled detail and a fitted working shape.",
+					"featured": true,
+					"materials": "Leather",
+					"color": "Brown",
+					"dimensions": "Fitted to knife",
+					"personalization_note": "Shape and tooling depend on the knife and carry style.",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/knife-sheath-1200.webp",
+							"alt": "Hand-tooled leather knife sheath",
+							"filename": "tooled-knife-sheath.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "This sheath is built around practical carry first, then finished with tooling that gives it a personal touch.",
+									"_key": "knife-sheath-span-1"
+								}
+							],
+							"_key": "knife-sheath-block-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["sheath"],
+					"tag": ["tooled", "western", "ranch"]
+				}
+			},
+			{
+				"id": "tooled-rifle-slings",
+				"slug": "tooled-rifle-slings",
+				"status": "published",
+				"data": {
+					"title": "Tooled Rifle Slings",
+					"summary": "Personalized leather rifle slings with hand-tooled detail and practical field use in mind.",
+					"featured": true,
+					"materials": "Leather, sling hardware",
+					"color": "Brown",
+					"dimensions": "Adjustable fit",
+					"personalization_note": "Names, initials, and finish details can be discussed on Etsy.",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/slings-1200.webp",
+							"alt": "A set of tooled leather rifle slings",
+							"filename": "tooled-rifle-slings.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "These slings show how the same working shape can take on different character through tooling, finish, and personalization.",
+									"_key": "slings-span-1"
+								}
+							],
+							"_key": "slings-block-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["rifle-sling"],
+					"tag": ["tooled", "personalized", "hunting", "ranch"]
+				}
+			},
+			{
+				"id": "leather-cartridge-holder",
+				"slug": "leather-cartridge-holder",
+				"status": "published",
+				"data": {
+					"title": "Leather Cartridge Holder",
+					"summary": "A leather cartridge holder with tooled detail and loops for carrying rounds.",
+					"featured": false,
+					"materials": "Leather",
+					"color": "Brown",
+					"dimensions": "Sized for cartridge loops",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/bullet-holder-2-1200.webp",
+							"alt": "Tooled leather cartridge holder with carry loops",
+							"filename": "leather-cartridge-holder.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A compact working accessory with tooled detail and enough structure to keep rounds organized.",
+									"_key": "cartridge-holder-span-1"
+								}
+							],
+							"_key": "cartridge-holder-block-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["cartridge-holder"],
+					"tag": ["tooled", "hunting", "ranch"]
+				}
+			},
+			{
+				"id": "texas-tooled-cartridge-holder",
+				"slug": "texas-tooled-cartridge-holder",
+				"status": "published",
+				"data": {
+					"title": "Texas Tooled Cartridge Holder",
+					"summary": "A brown leather cartridge holder panel with Texas tooling and punched carry holes.",
+					"featured": false,
+					"materials": "Leather",
+					"color": "Brown",
+					"dimensions": "Panel style",
+					"availability_note": "Ask on Etsy",
+					"featured_image": {
+						"$media": {
+							"url": "https://dev.gncroyalworks.com/images/finished-work/bullet-holder-1200.webp",
+							"alt": "Texas tooled leather cartridge holder panel",
+							"filename": "texas-tooled-cartridge-holder.webp"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A small leather panel with Texas tooling, punched carry holes, and a practical field-ready feel.",
+									"_key": "texas-cartridge-holder-span-1"
+								}
+							],
+							"_key": "texas-cartridge-holder-block-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["cartridge-holder"],
+					"tag": ["tooled", "western", "hunting"]
+				}
+			}
+		]
+	}
+}

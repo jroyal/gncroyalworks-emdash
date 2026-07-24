@@ -1,0 +1,276 @@
+---
+import { Font } from "astro:assets";
+import { getMenu, getSiteSettings } from "emdash";
+import { createPublicPageContext } from "emdash/page";
+import { EmDashBodyEnd, EmDashBodyStart, EmDashHead } from "emdash/ui";
+import { ETSY_SHOP_URL } from "../lib/site";
+import "../styles/tokens.css";
+import "../styles/theme.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	type?: "website" | "article";
+	content?: { collection: string; id: string; slug?: string | null };
+}
+
+const { title, description, image, type = "website", content } = Astro.props;
+const settings = await getSiteSettings();
+const menu = await getMenu("primary");
+const siteTitle = settings?.title || "GNCRoyalWorks";
+const siteDescription =
+	description || settings?.tagline || "Handmade leatherwork in Katy, Texas";
+const fullTitle = title ? `${title} — ${siteTitle}` : siteTitle;
+const siteLogo = (settings?.logo as any)?.url
+	? settings.logo as { mediaId: string; alt?: string; url: string }
+	: null;
+
+const pageCtx = createPublicPageContext({
+	Astro,
+	kind: content ? "content" : "custom",
+	pageType: type,
+	title: fullTitle,
+	pageTitle: title ?? siteTitle,
+	description: siteDescription,
+	canonical: Astro.url.href,
+	image,
+	seo: { ogImage: image },
+	siteName: siteTitle,
+	content,
+});
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{fullTitle}</title>
+		<EmDashHead page={pageCtx} />
+		<Font cssVariable="--font-heading" preload />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title={`${siteTitle} RSS Feed`}
+			href="/rss.xml"
+		/>
+	</head>
+	<body>
+		<EmDashBodyStart page={pageCtx} />
+		<header class="site-header">
+			<nav class="nav" aria-label="Primary navigation">
+				<a href="/" class="brand-link" aria-label={`${siteTitle} home`}>
+					{
+						siteLogo ? (
+							<img
+								src={siteLogo.url}
+								alt={siteLogo.alt || siteTitle}
+								class="site-logo-img"
+							/>
+						) : (
+							<>
+								<span class="brand-name">{siteTitle}</span>
+								<span class="brand-meta">{settings?.tagline}</span>
+							</>
+						)
+					}
+				</a>
+				<div class="nav-links">
+					{
+						menu?.items.map((item) => (
+							<a
+								href={item.url}
+								target={item.target}
+								rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+							>
+								{item.label}
+							</a>
+						))
+					}
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-content">
+				<div>
+					<p class="footer-logo">{siteTitle}</p>
+					<p class="footer-tagline">
+						{settings?.tagline || "Handmade leatherwork in Katy, Texas"}
+					</p>
+				</div>
+				<a
+					href={ETSY_SHOP_URL}
+					class="footer-etsy"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Visit the Etsy Shop
+				</a>
+			</div>
+		</footer>
+		<EmDashBodyEnd page={pageCtx} />
+
+		<style is:global>
+			@layer base;
+
+			@layer base {
+				*,
+				*::before,
+				*::after {
+					box-sizing: border-box;
+					margin: 0;
+					padding: 0;
+				}
+
+				html {
+					scroll-behavior: smooth;
+				}
+
+				body {
+					min-height: 100vh;
+					color: var(--color-text);
+					background: var(--color-bg);
+					font-family: var(--font-body);
+					font-size: var(--font-size-base);
+					line-height: var(--leading-normal);
+					-webkit-font-smoothing: antialiased;
+				}
+
+				a {
+					color: currentColor;
+				}
+
+				img {
+					display: block;
+					max-width: 100%;
+					height: auto;
+				}
+
+				h1,
+				h2,
+				h3,
+				h4 {
+					font-family: var(--font-heading);
+					font-weight: var(--font-weight-heading);
+					line-height: var(--leading-snug);
+				}
+
+				h1 {
+					font-size: var(--font-size-4xl);
+				}
+
+				h2 {
+					font-size: var(--font-size-2xl);
+				}
+			}
+		</style>
+
+		<style>
+			.site-header,
+			.site-footer {
+				max-width: var(--wide-width);
+				margin: 0 auto;
+				padding-inline: var(--spacing-lg);
+			}
+
+			.site-header {
+				padding-block: var(--spacing-xl);
+			}
+
+			.nav,
+			.footer-content {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: var(--spacing-xl);
+			}
+
+			.brand-link {
+				display: inline-flex;
+				flex-direction: column;
+				color: inherit;
+				line-height: 1.15;
+				text-decoration: none;
+			}
+
+			.brand-name,
+			.footer-logo {
+				font-family: var(--font-heading);
+				font-size: var(--font-size-lg);
+				font-weight: 600;
+				letter-spacing: 0;
+			}
+
+			.brand-meta,
+			.footer-tagline {
+				color: var(--color-muted);
+				font-family: var(--font-heading);
+				font-size: var(--font-size-sm);
+				font-style: italic;
+			}
+
+			.site-logo-img {
+				width: auto;
+				height: 48px;
+			}
+
+			.nav-links {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-end;
+				gap: var(--spacing-lg);
+				color: var(--color-muted);
+				font-size: var(--font-size-sm);
+				font-weight: 600;
+			}
+
+			.nav-links a,
+			.footer-etsy {
+				text-decoration: none;
+				transition: color var(--transition-fast);
+			}
+
+			.nav-links a:hover,
+			.footer-etsy:hover {
+				color: var(--color-brand);
+			}
+
+			main {
+				min-height: calc(100vh - 220px);
+			}
+
+			.site-footer {
+				padding-block: var(--spacing-3xl);
+				border-top: 1px solid var(--color-border);
+			}
+
+			.footer-etsy {
+				color: var(--color-text);
+				font-size: var(--font-size-sm);
+				font-weight: 700;
+			}
+
+			@media (max-width: 700px) {
+				.nav,
+				.footer-content {
+					align-items: flex-start;
+					flex-direction: column;
+				}
+
+				.nav-links {
+					justify-content: flex-start;
+				}
+
+				h1 {
+					font-size: var(--font-size-3xl);
+				}
+			}
+		</style>
+	</body>
+</html>

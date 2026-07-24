@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page Not Found">
+	<section class="not-found">
+		<p class="eyebrow">404</p>
+		<h1>Page not found</h1>
+		<p>
+			That page is not in the gallery. You can head back to the finished work
+			or visit the Etsy shop.
+		</p>
+		<div class="links">
+			<a href="/finished-work">View finished work</a>
+			<a href="https://www.etsy.com/shop/GNCRoyalWorks">Visit Etsy</a>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.not-found {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.eyebrow {
+		margin-bottom: var(--spacing-sm);
+		color: var(--color-brand);
+		font-size: var(--font-size-xs);
+		font-weight: 800;
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+	}
+
+	.not-found p {
+		margin-top: var(--spacing-md);
+		color: var(--color-muted);
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-lg);
+		margin-top: var(--spacing-xl);
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+	}
+
+	.links a {
+		text-decoration: none;
+	}
+
+	.links a:hover {
+		color: var(--color-brand);
+	}
+</style>

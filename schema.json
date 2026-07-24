@@ -1,0 +1,121 @@
+{
+  "collections": [
+    {
+      "slug": "pages",
+      "label": "Pages",
+      "labelSingular": "Page",
+      "supports": [
+        "drafts",
+        "revisions",
+        "search"
+      ],
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "unique": false
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "required": false,
+          "unique": false
+        }
+      ]
+    },
+    {
+      "slug": "pieces",
+      "label": "Finished Pieces",
+      "labelSingular": "Finished Piece",
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "unique": false
+        },
+        {
+          "slug": "featured_image",
+          "label": "Featured Image",
+          "type": "image",
+          "required": true,
+          "unique": false
+        },
+        {
+          "slug": "summary",
+          "label": "Summary",
+          "type": "text",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "featured",
+          "label": "Feature on Homepage",
+          "type": "boolean",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "materials",
+          "label": "Materials",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "color",
+          "label": "Color",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "dimensions",
+          "label": "Dimensions",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "personalization_note",
+          "label": "Personalization Note",
+          "type": "text",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "availability_note",
+          "label": "Availability Note",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "etsy_url",
+          "label": "Etsy URL",
+          "type": "url",
+          "required": false,
+          "unique": false
+        }
+      ]
+    }
+  ],
+  "version": "a7219fcc2bb07517"
+}
