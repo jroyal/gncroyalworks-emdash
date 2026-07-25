@@ -42,6 +42,11 @@
 					"type": "boolean"
 				},
 				{
+					"slug": "featured_order",
+					"label": "Featured Order",
+					"type": "number"
+				},
+				{
 					"slug": "materials",
 					"label": "Materials",
 					"type": "string"
@@ -214,6 +219,7 @@
 					"title": "Floral Tooled Rifle Sling",
 					"summary": "A personalized rifle sling with floral tooling and warm two-tone detail.",
 					"featured": true,
+					"featured_order": 4,
 					"materials": "Leather, solid hardware",
 					"color": "Two-tone brown",
 					"dimensions": "Adjustable fit",
@@ -238,6 +244,7 @@
 					"title": "Royal Tooled Leather Belt",
 					"summary": "A personalized leather belt with tooling, lettering, and a western-style buckle.",
 					"featured": true,
+					"featured_order": 3,
 					"materials": "Leather, buckle hardware",
 					"color": "Brown",
 					"dimensions": "Sized to order",
@@ -262,6 +269,7 @@
 					"title": "Tooled Knife Sheath",
 					"summary": "A belt-worn knife sheath with hand-tooled detail and a fitted working shape.",
 					"featured": true,
+					"featured_order": 2,
 					"materials": "Leather",
 					"color": "Brown",
 					"dimensions": "Fitted to knife",
@@ -286,6 +294,7 @@
 					"title": "Tooled Rifle Slings",
 					"summary": "Personalized leather rifle slings with hand-tooled detail and practical field use in mind.",
 					"featured": true,
+					"featured_order": 1,
 					"materials": "Leather, sling hardware",
 					"color": "Brown",
 					"dimensions": "Adjustable fit",

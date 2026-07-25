@@ -1,30 +1,19 @@
 /*
-  Theme overrides for GNCRoyalWorks. Keep this calm and product-led: a quiet
+  Theme overrides for GNCRoyalWorks. Keep this calm and product-led: a light
   blue-green atmosphere, one restrained green accent, and leatherwork photos as
   the main visual interest.
 */
 
 :root {
-	--color-bg: light-dark(#f6faf7, #101715);
-	--color-surface: light-dark(#fffefa, #191f1b);
-	--color-text: light-dark(#26312c, #f3f1e9);
-	--color-muted: light-dark(#60726c, #afbbb4);
-	--color-border: light-dark(#d5e2dc, #34423d);
-	--color-brand: light-dark(#356756, #92bea9);
-	--color-on-brand: light-dark(#ffffff, #0d1512);
+	color-scheme: light;
+	--color-bg: #f2fbf7;
+	--color-surface: #fffefa;
+	--color-text: #26312c;
+	--color-muted: #5f7168;
+	--color-border: #cddfd7;
+	--color-brand: #326d58;
+	--color-on-brand: #ffffff;
 	--color-brand-ring: color-mix(in srgb, var(--color-brand) 18%, transparent);
 	--radius: 6px;
 	--font-size-4xl: 4rem;
-}
-
-@supports not (color: light-dark(#000, #fff)) {
-	:root {
-		--color-bg: #f6faf7;
-		--color-surface: #fffefa;
-		--color-text: #26312c;
-		--color-muted: #60726c;
-		--color-border: #d5e2dc;
-		--color-brand: #356756;
-		--color-on-brand: #ffffff;
-	}
 }

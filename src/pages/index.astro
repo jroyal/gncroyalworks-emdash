@@ -10,12 +10,27 @@ const [{ entry: homePage, cacheHint: pageCacheHint }, featuredResult] =
 		getEmDashEntry("pages", "home"),
 		getEmDashCollection("pieces", {
 			orderBy: { published_at: "desc" },
-			limit: 12,
+			limit: 100,
 		}),
 	]);
 
+function getFeaturedOrder(piece: (typeof featuredResult.entries)[number]) {
+	const order = piece.data.featured_order;
+	return typeof order === "number" && Number.isFinite(order)
+		? order
+		: null;
+}
+
 let featuredPieces = featuredResult.entries
 	.filter((piece) => piece.data.featured)
+	.sort((a, b) => {
+		const aOrder = getFeaturedOrder(a);
+		const bOrder = getFeaturedOrder(b);
+		if (aOrder === null && bOrder === null) return 0;
+		if (aOrder === null) return 1;
+		if (bOrder === null) return -1;
+		return aOrder - bOrder;
+	})
 	.slice(0, 4);
 let piecesCacheHint = featuredResult.cacheHint;
 
@@ -231,17 +246,38 @@ if (Astro.cache?.enabled) {
 
 	@media (max-width: 760px) {
 		.hero {
-			padding-block: var(--spacing-3xl);
+			padding-block: var(--spacing-xl) var(--spacing-3xl);
 		}
 
 		.hero-title {
-			font-size: var(--font-size-3xl);
+			font-size: 2.35rem;
+		}
+
+		.hero-intro {
+			font-size: var(--font-size-base);
+		}
+
+		.cta-row {
+			flex-wrap: nowrap;
+			gap: var(--spacing-sm);
+		}
+
+		.button {
+			flex: 1 1 0;
+			min-width: 0;
+			padding-inline: var(--spacing-sm);
+			font-size: var(--font-size-xs);
+			text-align: center;
 		}
 
 		.section-title-row {
 			align-items: flex-start;
 			flex-direction: column;
 			gap: var(--spacing-sm);
+		}
+
+		.section-title {
+			font-size: var(--font-size-xl);
 		}
 
 		.pieces-grid {
