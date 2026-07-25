@@ -24,14 +24,20 @@ if (!piece) {
 	return Astro.redirect("/404");
 }
 
-const { entries: relatedPieces, cacheHint: relatedCacheHint } =
-	await getEmDashCollection("pieces", {
+const [
+	{ entry: detailPage, cacheHint: detailPageCacheHint },
+	{ entries: relatedPieces, cacheHint: relatedCacheHint },
+] = await Promise.all([
+	getEmDashEntry("pages", "piece-detail"),
+	getEmDashCollection("pieces", {
 		orderBy: { published_at: "desc" },
 		limit: 4,
-	});
+	}),
+]);
 
 if (Astro.cache?.enabled) {
 	Astro.cache.set(pieceCacheHint);
+	Astro.cache.set(detailPageCacheHint);
 	Astro.cache.set(relatedCacheHint);
 }
 
@@ -45,6 +51,10 @@ const factRows = [
 	["Color", piece.data.color],
 	["Dimensions", piece.data.dimensions],
 ].filter(([, value]) => Boolean(value));
+const relatedEyebrow =
+	detailPage?.data.related_eyebrow?.trim() || "More Finished Work";
+const relatedHeading =
+	detailPage?.data.related_heading?.trim() || "Other pieces from the shop";
 
 function getImageSrc(img: unknown): string | undefined {
 	if (!img || typeof img !== "object") return undefined;
@@ -120,8 +130,10 @@ function getImageSrc(img: unknown): string | undefined {
 		otherPieces.length > 0 && (
 			<section class="more-pieces">
 				<header class="more-header">
-					<p class="eyebrow">More Finished Work</p>
-					<h2>Other pieces from the shop</h2>
+					<p class="eyebrow" {...detailPage?.edit?.related_eyebrow}>
+						{relatedEyebrow}
+					</p>
+					<h2 {...detailPage?.edit?.related_heading}>{relatedHeading}</h2>
 				</header>
 				<div class="more-grid">
 					{otherPieces.map((relatedPiece) => (

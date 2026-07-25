@@ -76,6 +76,16 @@
 					"label": "Content",
 					"type": "portableText",
 					"searchable": true
+				},
+				{
+					"slug": "related_eyebrow",
+					"label": "Related Work Eyebrow",
+					"type": "string"
+				},
+				{
+					"slug": "related_heading",
+					"label": "Related Work Heading",
+					"type": "string"
 				}
 			]
 		}
@@ -182,6 +192,16 @@
 							"_key": "finished-block-1"
 						}
 					]
+				}
+			},
+			{
+				"id": "piece-detail",
+				"slug": "piece-detail",
+				"status": "published",
+				"data": {
+					"title": "Finished piece",
+					"related_eyebrow": "More Finished Work",
+					"related_heading": "Other pieces from the shop"
 				}
 			}
 		],

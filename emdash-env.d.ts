@@ -11,6 +11,8 @@ export interface Page {
   status: string;
   title: string;
   content?: PortableTextBlock[];
+  related_eyebrow?: string;
+  related_heading?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -25,10 +27,14 @@ export interface Piece {
   title: string;
   featured_image: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
   summary?: string;
+  content?: PortableTextBlock[];
   featured?: boolean;
   materials?: string;
   color?: string;
   dimensions?: string;
+  personalization_note?: string;
+  availability_note?: string;
+  etsy_url?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

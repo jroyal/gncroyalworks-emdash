@@ -23,6 +23,20 @@
           "type": "portableText",
           "required": false,
           "unique": false
+        },
+        {
+          "slug": "related_eyebrow",
+          "label": "Related Work Eyebrow",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "related_heading",
+          "label": "Related Work Heading",
+          "type": "string",
+          "required": false,
+          "unique": false
         }
       ]
     },
@@ -59,6 +73,13 @@
           "unique": false
         },
         {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "required": false,
+          "unique": false
+        },
+        {
           "slug": "featured",
           "label": "Feature on Homepage",
           "type": "boolean",
@@ -85,9 +106,30 @@
           "type": "string",
           "required": false,
           "unique": false
+        },
+        {
+          "slug": "personalization_note",
+          "label": "Personalization Note",
+          "type": "text",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "availability_note",
+          "label": "Availability Note",
+          "type": "string",
+          "required": false,
+          "unique": false
+        },
+        {
+          "slug": "etsy_url",
+          "label": "Etsy URL",
+          "type": "url",
+          "required": false,
+          "unique": false
         }
       ]
     }
   ],
-  "version": "d0305d17b1b39afa"
+  "version": "07bd729cdef818ae"
 }
