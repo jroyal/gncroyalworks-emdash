@@ -1,65 +1,44 @@
-# EmDash Portfolio Template (Cloudflare)
+# GNCRoyalWorks
 
-A visual portfolio for showcasing creative work, built with [EmDash](https://github.com/emdash-cms/emdash) and deployed on Cloudflare Workers with D1 and R2. Project pages with tag filtering, case study layouts, and an RSS feed for new work.
+A quiet gallery site for finished handmade leatherwork from GNCRoyalWorks in Katy, Texas.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdash-cms/templates/tree/main/portfolio-cloudflare)
+The site is meant to show completed pieces clearly and send purchase or custom-work conversations to Etsy. It is not a local store, cart, or inquiry system.
 
-![Portfolio template work page](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/portfolio/latest/work-light-desktop.jpg)
+## What Is Here
 
-## What's Included
+- A home page with editable intro copy and a small featured set of finished pieces.
+- A finished-work gallery at `/finished-work`, with category filters.
+- Detail pages for individual pieces at `/finished-work/:slug`.
+- Simple redirects from older or intent-based paths like `/work`, `/contact`, and `/custom-work`.
+- RSS, SEO basics, dark/light mode, and EmDash visual editing.
 
-- Project grid with hover effects
-- Tag-based filtering on the work page
-- Individual project pages with galleries
-- About and contact pages
-- RSS feed for new projects
-- SEO metadata and JSON-LD
-- Dark/light mode
+Content lives in EmDash:
 
-## Pages
+- `pieces` are finished leather pieces with one featured image, summary, optional materials/color/dimensions, featured flag, and featured order.
+- `category` and `tag` are taxonomy assignments on pieces.
+- `pages` holds editable copy for the home page, gallery page, and related-work text.
+- The primary menu points to Home, Finished Work, and the Etsy shop.
 
-| Page | Route |
-|---|---|
-| Homepage | `/` |
-| Work listing | `/work` |
-| Single project | `/work/:slug` |
-| About | `/about` |
-| Contact | `/contact` |
-| RSS | `/rss.xml` |
-| 404 | fallback |
-
-## Screenshots
-
-| | Desktop | Mobile |
-|---|---|---|
-| Light | ![work light desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/portfolio/latest/work-light-desktop.jpg) | ![work light mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/portfolio/latest/work-light-mobile.jpg) |
-| Dark | ![work dark desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/portfolio/latest/work-dark-desktop.jpg) | ![work dark mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/portfolio/latest/work-dark-mobile.jpg) |
-
-## Infrastructure
-
-- **Runtime:** Cloudflare Workers
-- **Database:** D1
-- **Storage:** R2
-- **Framework:** Astro with `@astrojs/cloudflare`
-
-## Local Development
+## Work Locally
 
 ```bash
 pnpm install
-pnpm bootstrap
 pnpm dev
 ```
 
-## Deploying
+The admin area is available at `/_emdash/admin` on the local dev URL.
+
+Useful checks:
+
+```bash
+pnpm typecheck
+pnpm build
+```
+
+## Deploy
 
 ```bash
 pnpm deploy
 ```
 
-Or click the deploy button above to set up the project in your Cloudflare account.
-
-## See Also
-
-- [Node.js variant](../portfolio) -- same template using SQLite and local file storage
-- [All templates](../)
-- [EmDash documentation](https://github.com/emdash-cms/emdash/tree/main/docs)
+Deploying updates the Cloudflare Worker code. Existing production content and schema live in the production EmDash database, so content-model changes should be made there intentionally and then reflected back in `seed/seed.json`.
