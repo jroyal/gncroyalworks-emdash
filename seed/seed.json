@@ -37,12 +37,6 @@
 					"searchable": true
 				},
 				{
-					"slug": "content",
-					"label": "Content",
-					"type": "portableText",
-					"searchable": true
-				},
-				{
 					"slug": "featured",
 					"label": "Feature on Homepage",
 					"type": "boolean"
@@ -61,21 +55,6 @@
 					"slug": "dimensions",
 					"label": "Dimensions",
 					"type": "string"
-				},
-				{
-					"slug": "personalization_note",
-					"label": "Personalization Note",
-					"type": "text"
-				},
-				{
-					"slug": "availability_note",
-					"label": "Availability Note",
-					"type": "string"
-				},
-				{
-					"slug": "etsy_url",
-					"label": "Etsy URL",
-					"type": "url"
 				}
 			]
 		},
@@ -218,41 +197,13 @@
 					"materials": "Leather, solid hardware",
 					"color": "Two-tone brown",
 					"dimensions": "Adjustable fit",
-					"personalization_note": "Names, initials, tooling, and finish may vary by request.",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/sling-fav-1200.webp",
 							"alt": "Personalized floral tooled leather rifle sling",
 							"filename": "floral-tooled-rifle-sling.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "This rifle sling puts the tooling front and center while keeping the piece built for regular use.",
-									"_key": "floral-sling-span-1"
-								}
-							],
-							"_key": "floral-sling-block-1"
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "Send a message on Etsy if you want to talk through one like it.",
-									"_key": "floral-sling-span-2"
-								}
-							],
-							"_key": "floral-sling-block-2"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["rifle-sling"],
@@ -270,29 +221,13 @@
 					"materials": "Leather, buckle hardware",
 					"color": "Brown",
 					"dimensions": "Sized to order",
-					"personalization_note": "Lettering and pattern details can vary by request.",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/royal-belt-1200.webp",
 							"alt": "Personalized tooled leather belt with western buckle",
 							"filename": "royal-tooled-leather-belt.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "A belt is one of those pieces that needs to look good and hold up. This one keeps the tooling and name detail personal without losing its everyday purpose.",
-									"_key": "royal-belt-span-1"
-								}
-							],
-							"_key": "royal-belt-block-1"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["belt"],
@@ -310,29 +245,13 @@
 					"materials": "Leather",
 					"color": "Brown",
 					"dimensions": "Fitted to knife",
-					"personalization_note": "Shape and tooling depend on the knife and carry style.",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/knife-sheath-1200.webp",
 							"alt": "Hand-tooled leather knife sheath",
 							"filename": "tooled-knife-sheath.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "This sheath is built around practical carry first, then finished with tooling that gives it a personal touch.",
-									"_key": "knife-sheath-span-1"
-								}
-							],
-							"_key": "knife-sheath-block-1"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["sheath"],
@@ -350,29 +269,13 @@
 					"materials": "Leather, sling hardware",
 					"color": "Brown",
 					"dimensions": "Adjustable fit",
-					"personalization_note": "Names, initials, and finish details can be discussed on Etsy.",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/slings-1200.webp",
 							"alt": "A set of tooled leather rifle slings",
 							"filename": "tooled-rifle-slings.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "These slings show how the same working shape can take on different character through tooling, finish, and personalization.",
-									"_key": "slings-span-1"
-								}
-							],
-							"_key": "slings-block-1"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["rifle-sling"],
@@ -390,28 +293,13 @@
 					"materials": "Leather",
 					"color": "Brown",
 					"dimensions": "Sized for cartridge loops",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/bullet-holder-2-1200.webp",
 							"alt": "Tooled leather cartridge holder with carry loops",
 							"filename": "leather-cartridge-holder.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "A compact working accessory with tooled detail and enough structure to keep rounds organized.",
-									"_key": "cartridge-holder-span-1"
-								}
-							],
-							"_key": "cartridge-holder-block-1"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["cartridge-holder"],
@@ -429,28 +317,13 @@
 					"materials": "Leather",
 					"color": "Brown",
 					"dimensions": "Panel style",
-					"availability_note": "Ask on Etsy",
 					"featured_image": {
 						"$media": {
 							"url": "https://dev.gncroyalworks.com/images/finished-work/bullet-holder-1200.webp",
 							"alt": "Texas tooled leather cartridge holder panel",
 							"filename": "texas-tooled-cartridge-holder.webp"
 						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "A small leather panel with Texas tooling, punched carry holes, and a practical field-ready feel.",
-									"_key": "texas-cartridge-holder-span-1"
-								}
-							],
-							"_key": "texas-cartridge-holder-block-1"
-						}
-					]
+					}
 				},
 				"taxonomies": {
 					"category": ["cartridge-holder"],

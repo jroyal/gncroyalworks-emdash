@@ -69,10 +69,7 @@ const pageCtx = createPublicPageContext({
 								class="site-logo-img"
 							/>
 						) : (
-							<>
-								<span class="brand-name">{siteTitle}</span>
-								<span class="brand-meta">{settings?.tagline}</span>
-							</>
+							<span class="brand-name">{siteTitle}</span>
 						)
 					}
 				</a>
@@ -100,9 +97,6 @@ const pageCtx = createPublicPageContext({
 			<div class="footer-content">
 				<div>
 					<p class="footer-logo">{siteTitle}</p>
-					<p class="footer-tagline">
-						{settings?.tagline || "Handmade leatherwork in Katy, Texas"}
-					</p>
 				</div>
 				<a
 					href={ETSY_SHOP_URL}
@@ -205,14 +199,6 @@ const pageCtx = createPublicPageContext({
 				font-size: var(--font-size-lg);
 				font-weight: 600;
 				letter-spacing: 0;
-			}
-
-			.brand-meta,
-			.footer-tagline {
-				color: var(--color-muted);
-				font-family: var(--font-heading);
-				font-size: var(--font-size-sm);
-				font-style: italic;
 			}
 
 			.site-logo-img {

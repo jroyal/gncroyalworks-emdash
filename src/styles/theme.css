@@ -1,18 +1,30 @@
 /*
-  Theme overrides for GNCRoyalWorks. Keep this calm and product-led: warm
-  neutrals, one restrained green accent, and leatherwork photos as the main
-  visual interest.
+  Theme overrides for GNCRoyalWorks. Keep this calm and product-led: a quiet
+  blue-green atmosphere, one restrained green accent, and leatherwork photos as
+  the main visual interest.
 */
 
 :root {
-	--color-bg: light-dark(#fbfaf7, #12110f);
-	--color-surface: light-dark(#fffdf8, #1b1916);
-	--color-text: light-dark(#2c2925, #f4efe7);
-	--color-muted: light-dark(#6d665c, #b8afa1);
-	--color-border: light-dark(#ded6ca, #38332c);
-	--color-brand: light-dark(#3f5942, #87a88d);
-	--color-on-brand: light-dark(#ffffff, #10130f);
-	--color-brand-ring: color-mix(in srgb, var(--color-brand) 16%, transparent);
+	--color-bg: light-dark(#f6faf7, #101715);
+	--color-surface: light-dark(#fffefa, #191f1b);
+	--color-text: light-dark(#26312c, #f3f1e9);
+	--color-muted: light-dark(#60726c, #afbbb4);
+	--color-border: light-dark(#d5e2dc, #34423d);
+	--color-brand: light-dark(#356756, #92bea9);
+	--color-on-brand: light-dark(#ffffff, #0d1512);
+	--color-brand-ring: color-mix(in srgb, var(--color-brand) 18%, transparent);
 	--radius: 6px;
 	--font-size-4xl: 4rem;
+}
+
+@supports not (color: light-dark(#000, #fff)) {
+	:root {
+		--color-bg: #f6faf7;
+		--color-surface: #fffefa;
+		--color-text: #26312c;
+		--color-muted: #60726c;
+		--color-border: #d5e2dc;
+		--color-brand: #356756;
+		--color-on-brand: #ffffff;
+	}
 }

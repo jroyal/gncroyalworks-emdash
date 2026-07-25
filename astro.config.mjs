@@ -21,7 +21,7 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.google(),
-			name: "Playfair Display",
+			name: "EB Garamond",
 			cssVariable: "--font-heading",
 			weights: [400, 500, 600, 700],
 			fallbacks: ["serif"],

@@ -4,7 +4,7 @@ import {
 	getEmDashCollection,
 	getEmDashEntry,
 } from "emdash";
-import { Image, PortableText } from "emdash/ui";
+import { Image } from "emdash/ui";
 import Base from "../../layouts/Base.astro";
 import PieceCard from "../../components/PieceCard.astro";
 import { ETSY_SHOP_URL, getPrimaryTermLabel, getTermLabels } from "../../lib/site";
@@ -38,15 +38,12 @@ if (Astro.cache?.enabled) {
 const otherPieces = relatedPieces
 	.filter((relatedPiece) => relatedPiece.id !== piece.id)
 	.slice(0, 3);
-const ctaUrl = piece.data.etsy_url || ETSY_SHOP_URL;
 const categoryLabel = getPrimaryTermLabel(piece.data.terms?.category);
 const tagLabels = getTermLabels(piece.data.terms?.tag);
 const factRows = [
 	["Materials", piece.data.materials],
 	["Color", piece.data.color],
 	["Dimensions", piece.data.dimensions],
-	["Personalization", piece.data.personalization_note],
-	["Availability", piece.data.availability_note || "Ask on Etsy"],
 ].filter(([, value]) => Boolean(value));
 
 function getImageSrc(img: unknown): string | undefined {
@@ -82,7 +79,7 @@ function getImageSrc(img: unknown): string | undefined {
 			<div class="cta-row">
 				<a
 					class="button"
-					href={ctaUrl}
+					href={ETSY_SHOP_URL}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -116,13 +113,6 @@ function getImageSrc(img: unknown): string | undefined {
 				)
 			}
 
-			{
-				piece.data.content && (
-					<div class="piece-content" {...piece.edit.content}>
-						<PortableText value={piece.data.content} />
-					</div>
-				)
-			}
 		</div>
 	</article>
 
@@ -279,15 +269,6 @@ function getImageSrc(img: unknown): string | undefined {
 		font-weight: 700;
 		letter-spacing: var(--tracking-wide);
 		text-transform: uppercase;
-	}
-
-	.piece-content {
-		color: var(--color-muted);
-		line-height: var(--leading-relaxed);
-	}
-
-	.piece-content :global(p) {
-		margin-bottom: 1.25em;
 	}
 
 	.more-pieces {
